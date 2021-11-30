@@ -13,11 +13,20 @@ import * as ordersAPI from '../../utilities/orders-api';
 export default function OrderHistoryPage({ user, setUser }) {
 
   const [orders, setOrders] = useState([]);
+  
+    useEffect(function() {
+      async function getOrders() {
+        const orders = await ordersAPI.history();
+        setOrders(orders);
+      }
+      getOrders();
+    });
 
     async function addHistory(itemId){
       const orderHistory = await ordersAPI.history(itemId);
       setOrders(orderHistory);
     }
+
 
   return (
     <main className="OrderHistoryPage">
