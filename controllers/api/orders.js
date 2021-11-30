@@ -38,7 +38,8 @@ async function checkout(req, res) {
 }
 
 async function history(req, res){
-  const cart = await Order.getCart(req.user._id);
-  cart.isPaid = true;
-  res.json(cart);
+  const orders = await Order
+  .find({ user: req.user._id, isPaid: true })
+  .sort('-updatedAt').exec();
+  res.json(orders);
 }

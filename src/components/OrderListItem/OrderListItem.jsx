@@ -1,10 +1,10 @@
 import './OrderListItem.css';
 
-export default function OrderListItem({order, user}) {
+export default function OrderListItem({orderItem, history}) {
   return (
     <div className="OrderListItem">
       
-        <div>{order}</div>
+        <div>{orderItem.updatedAt}</div>
 
     </div>
   );

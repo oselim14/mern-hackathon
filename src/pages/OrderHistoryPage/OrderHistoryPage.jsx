@@ -10,9 +10,14 @@ import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
 
 
-export default function OrderHistoryPage({ user, setUser, order }) {
+export default function OrderHistoryPage({ user, setUser }) {
 
-    ordersAPI.getCart();
+  const [orders, setOrders] = useState([]);
+
+    async function addHistory(itemId){
+      const orderHistory = await ordersAPI.history(itemId);
+      setOrders(orderHistory);
+    }
 
   return (
     <main className="OrderHistoryPage">
@@ -22,7 +27,7 @@ export default function OrderHistoryPage({ user, setUser, order }) {
         <UserLogOut user={user} setUser={setUser} />
       </aside>
       <center>
-        <OrderList order={order} user={user}/>
+        <OrderList orders={orders} user={user} addHistory={addHistory}/>
         <OrderDetail />
       </center>
 
