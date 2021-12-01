@@ -13,11 +13,13 @@ import * as ordersAPI from '../../utilities/orders-api';
 export default function OrderHistoryPage({ user, setUser }) {
 
   const [orders, setOrders] = useState([]);
+  const [activeOrder, setActiveOrder] = useState('');
   
     useEffect(function() {
       async function getOrders() {
         const orders = await ordersAPI.history();
         setOrders(orders);
+        setActiveOrder(orders[1]);
       }
       getOrders();
     });
@@ -37,9 +39,8 @@ export default function OrderHistoryPage({ user, setUser }) {
       </aside>
       <center>
         <OrderList orders={orders} user={user} addHistory={addHistory}/>
-        <OrderDetail />
       </center>
-
+        <OrderDetail order={activeOrder}/>
     </main>
   );
 }

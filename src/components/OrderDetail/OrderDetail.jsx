@@ -5,6 +5,7 @@ import LineItem from '../LineItem/LineItem';
 export default function OrderDetail({ order, handleChangeQty, handleCheckout }) {
   if (!order) return null;
 
+  
   const lineItems = order.lineItems.map(item =>
     <LineItem
       lineItem={item}

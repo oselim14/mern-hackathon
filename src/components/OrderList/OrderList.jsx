@@ -13,7 +13,7 @@ export default function OrderList({ orders, addHistory, user }) {
         />
         );
     return (
-        <div>
+        <div className="OrderList">
             {items}
         </div>
     )

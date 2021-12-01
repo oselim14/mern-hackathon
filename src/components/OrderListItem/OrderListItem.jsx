@@ -2,7 +2,7 @@ import './OrderListItem.css';
 
 export default function OrderListItem({orderItem, history}) {
   return (
-    <div className="OrderList">
+  
     <div className="OrderListItem">
       <div>
         <div>
@@ -11,10 +11,10 @@ export default function OrderListItem({orderItem, history}) {
         </div>
         </div>
         <div className="align-rt">
-          <div>{orderItem.totalQty}</div>
           <div className="smaller">${(orderItem.orderTotal).toFixed(2)}</div>
+          <div className="smaller">{orderItem.totalQty} items</div>
         </div>
       </div>
-    </div>
+
   );
 }
